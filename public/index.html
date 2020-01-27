@@ -23,15 +23,33 @@
 <body>
   <div id="container"></div>
   <script type="text/babel">
-    var destination = document.querySelector("#container");
+    class Buttonify extends  React.Component{
+      render(){
+        return(
+              <div>
+                <button type={this.props.behavior}>{this.props.children}</button>
+              </div>
+        );
+      }
+    }
+    class HelloWorld extends React.Component{
+      render(){
+        return <p>Hello, {this.props.greetTarget}</p>;
+      }
+
+    }
     ReactDOM.render(
-            <div>
-              <h1>Batman</h1>
-              <h1>Iron Man</h1>
-              <h1>Nicolas Cage</h1>
-              <h1>Mega Man</h1>
-            </div>,
-            destination);
+      <div>
+        <HelloWorld greetTarget="Batman"/>
+        <HelloWorld greetTarget="Iron Man"/>
+        <HelloWorld greetTarget="ABCD"/>
+        <HelloWorld greetTarget="Mega man"/>
+        <HelloWorld greetTarget="Bono"/>
+        <HelloWorld greetTarget="Catwoman"/>
+        <Buttonify behavior = "submit">SEND DATA</Buttonify>
+      </div>,
+      document.querySelector("#container")
+    );
 
   </script>
 </body>
